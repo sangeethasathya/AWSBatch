@@ -1,14 +1,9 @@
-from flask import Flask
+import time
 
-app = Flask(__name__)
-
-@app.route("/")
-def home():
-    return "🚀 Hello from AWS App Runner - deployed via GitHub!"
-
-@app.route("/health")
-def health():
-    return {"status": "healthy"}
+def main():
+    print("Starting batch job...")
+    time.sleep(3)
+    print("Processing done!")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
+    main()
