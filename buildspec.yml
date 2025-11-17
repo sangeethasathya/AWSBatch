@@ -8,7 +8,7 @@ phases:
   build:
     commands:
       - echo Building Docker image...
-      - docker build -t my-app .
+      - docker build -t batch-job .
       - docker tag batch-job:latest $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/batch-job:latest
   post_build:
     commands:
