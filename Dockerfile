@@ -1,18 +1,16 @@
-# Use official Python image with pip pre-installed
-FROM python:3.11-slim
+FROM python:3.10-slim
 
-# Set working directory
+# Create working directory
 WORKDIR /app
 
-# Copy requirements and install
+# Copy dependency files
 COPY requirements.txt .
+
+# Install dependencies efficiently
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy app code
-COPY . .
+# Copy your batch job code
+COPY process_data.py .
 
-# Expose the port App Runner expects
-EXPOSE 8080
-
-# Run the app with gunicorn for production
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8080", "app:app"]
+# Default command (runs your job)
+CMD ["python", "process_data.py"]
